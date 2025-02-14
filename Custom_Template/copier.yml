@@ -1,0 +1,58 @@
+# Questions for the user
+project_name:
+  type: str
+  help: What is the name of your project?
+  default: my-python-project
+
+project_description:
+  type: str
+  help: A short description of your project
+  default: A Python project created from template
+
+author_name:
+  type: str
+  help: Your full name
+  default: Your Name
+
+author_email:
+  type: str
+  help: Your email address
+  default: your.email@example.com
+
+python_version:
+  type: str
+  help: Python version to use
+  default: "3.11"
+  choices:
+    - "3.8"
+    - "3.9"
+    - "3.10"
+    - "3.11"
+    - "3.12"
+
+use_pytest:
+  type: bool
+  help: Would you like to include pytest for testing?
+  default: true
+
+use_black:
+  type: bool
+  help: Would you like to include Black for code formatting?
+  default: true
+
+use_mypy:
+  type: bool
+  help: Would you like to include mypy for type checking?
+  default: true
+
+use_pre_commit:
+  type: bool
+  help: Would you like to include pre-commit hooks?
+  default: true
+
+_templates_suffix: ""
+_subdirectory: template
+
+# Computed variables
+_jinja_extensions:
+  - jinja2_time.TimeExtension

@@ -1,0 +1,37 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "{{ project_name }}"
+version = "0.1.0"
+description = "{{ project_description }}"
+readme = "README.md"
+requires-python = ">={{ python_version }}"
+authors = [
+    { name = "{{ author_name }}", email = "{{ author_email }}" }
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.1.0"
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py{{ python_version.replace('.', '') }}"
+
+[tool.black]
+line-length = 88
+target-version = ["py{{ python_version.replace('.', '') }}"]
+
+[tool.mypy]
+python_version = "{{ python_version }}"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+norecursedirs = ["template/*"]

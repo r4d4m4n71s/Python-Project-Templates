@@ -53,13 +53,13 @@ Via `copier.yml`:
 - 🐍 Python version selection (3.8-3.12)
 - 🛠️ Optional development tools:
   - ✅ pytest for testing
-  - 🎨 black for code formatting
-  - 📋 mypy for type checking
-  - 🔄 pre-commit hooks
+  - 🎨 [Black](https://black.readthedocs.io/) for code formatting
+  - 📋 [mypy](https://mypy.readthedocs.io/) for type checking
+  - 🔄 [pre-commit hooks](https://pre-commit.com/) for code quality
 
 ### 🔧 Development Tools
 - 📦 Modern packaging with `pyproject.toml`
-- 🚀 Fast linting with Ruff
+- 🚀 Fast linting with [Ruff](https://docs.astral.sh/ruff/)
 - 🧪 Pre-configured test suite
 - 🔍 Type checking support
 - ✨ Code formatting
@@ -72,31 +72,43 @@ Via `copier.yml`:
 
 - Python 3.8 or newer
 - Git (for pre-commit hooks)
-- Windows (for batch script)
 
 ### 📥 Installation
 
 1. Clone the repository:
 ```bash
 git clone https://github.com/yourusername/Python-Project-Templates.git
-cd Python-Project-Templates
+cd Python-Project-Templates/Custom_Template
+```
+
+2. Make the script executable (Unix-like systems only):
+```bash
+chmod +x create.sh
 ```
 
 ### 🎮 Usage
 
 1. Run the setup script:
+
+On Windows:
 ```bash
-create_new_project.bat
+create.bat
+```
+
+On Unix-like systems (Linux/macOS):
+```bash
+./create.sh
 ```
 
 2. Follow the interactive prompts:
-   - 📂 Specify project location
-   - 🌐 Choose virtual environment setup
-   - ⚙️ Configure project settings
+   - 📂 Enter the path/project_folder to create (e.g., `~/Projects/my-awesome-project`)
+     - The last part of the path will be used as the project name
+   - 🌐 Choose whether to create a virtual environment
+   - ⚙️ Configure additional project settings
 
 3. Post-creation setup:
 ```bash
-cd your-project-name
+cd your-project-path
 pip install -e ".[dev]"
 pre-commit install  # if selected
 ```
@@ -116,10 +128,10 @@ pre-commit install  # if selected
 - 🧪 Ready-to-use testing setup
 
 ### 📊 Code Quality Tools
-- 🔍 Linting with Ruff
-- 🎨 Code formatting with Black (optional)
-- 📋 Type checking with mypy (optional)
-- ✅ Pre-commit hooks for consistent quality
+- 🔍 [Ruff](https://docs.astral.sh/ruff/) for fast linting
+- 🎨 [Black](https://black.readthedocs.io/) for code formatting (optional)
+- 📋 [mypy](https://mypy.readthedocs.io/) for type checking (optional)
+- ✅ [pre-commit hooks](https://pre-commit.com/) for consistent quality
 
 ### ⚙️ Project Configuration
 - 📜 MIT License included
@@ -132,7 +144,6 @@ pre-commit install  # if selected
 
 - 🐍 Python 3.8 or newer
 - 📦 Git (for pre-commit hooks)
-- 🖥️ Windows (for batch script) or equivalent shell script for other platforms
 
 ---
 

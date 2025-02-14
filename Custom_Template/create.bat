@@ -8,7 +8,11 @@ echo.
 echo Project Configuration
 echo ===================
 echo.
+set "initial_dir=%CD%"
 set /p project_path="Enter the [path/project_folder] to create: "
+
+REM Extract project name from the last part of the path
+for %%I in ("!project_path!") do set "project_name=%%~nxI"
 
 if not exist "!project_path!" (
     mkdir "!project_path!"
@@ -23,15 +27,17 @@ if /i "!create_venv!"=="y" (
     python -m venv .venv
     if errorlevel 1 (
         echo Failed to create virtual environment. Make sure Python is installed and in PATH.
+        cd "!initial_dir!"
         exit /b 1
     )
     echo Activating virtual environment...
     call .venv\Scripts\activate
     if errorlevel 1 (
         echo Failed to activate virtual environment.
+        cd "!initial_dir!"
         exit /b 1
     )
-    cd ..
+    cd "!initial_dir!"
 ) else if /i "!create_venv!"=="n" (
     echo Skipping virtual environment creation.
 ) else (
@@ -44,7 +50,7 @@ echo Installing required dependencies...
 if /i "!create_venv!"=="y" (
     cd "!project_path!"
     pip install copier jinja2-time
-    cd ..
+    cd "!initial_dir!"
 ) else (
     pip install copier jinja2-time
 )
@@ -55,7 +61,8 @@ if errorlevel 1 (
 
 echo.
 echo Running copier template...
-copier copy --trust . "!project_path!"
+echo Using project name: !project_name!
+copier copy --trust --data project_name="!project_name!" . "!project_path!"
 
 if errorlevel 1 (
     echo Failed to create project.
